@@ -17,8 +17,14 @@ def timeformating(minutes: int) -> str:
     :param minutes: aeg minutites
     :return: aeg formadiis xtundi xminutit
     """
-    pass
 
+    if minutes < 60:
+        return "Vigane sisend"
+
+    hours = minutes // 60
+    remaining_minutes = minutes % 60
+
+    return f"{hours}tundi ja {remaining_minutes}minutit"
 
 def countvowels(word: str) -> int:
     """
@@ -32,8 +38,22 @@ def countvowels(word: str) -> int:
     :param word: sõna kus peab täishäälikuid kokku lugema
     :return:
     """
-    pass
 
+    counter = 0
+
+    for letter in word:
+        if letter in "aeiouAEIOU":
+            counter += 1
+
+    return counter
+
+def iscontainvowels(word: str) -> bool:
+
+    for letter in word:
+        if letter in "aeiouAEIOU":
+            return True
+        else:
+            return False
 
 def longshortstring(a: str, b: str) -> str:
     """
@@ -50,8 +70,14 @@ def longshortstring(a: str, b: str) -> str:
     :param b: sisestatav sõne
     :return: sõne alguses ja lõpus - lüheim, keskel pikim
     """
-    pass
 
+    len_a = len(a)
+    len_b = len(b)
+
+    if len_a < len_b:
+        return a.upper() + b.lower() + a.upper()
+    else:
+        return b.upper() + a.lower() + b.upper()
 
 def makeiteven(nums: list) -> list:
     """
@@ -67,8 +93,13 @@ def makeiteven(nums: list) -> list:
     :param nums: järjend täisarvudega
     :return: järjend paarisarvudega
     """
-    pass
+    result = []
 
+    for num in nums:
+        if num % 2 == 0:
+            result.append(num)
+
+    return result
 
 def speedticket(speed: int, isbirthday: bool) -> int:
     """
@@ -96,8 +127,18 @@ def speedticket(speed: int, isbirthday: bool) -> int:
     :param isbirthday: tõeväärsus kas on sünnip. või ei
     :return: täisarv vastavalt olukorrale
     """
-    pass
 
+    if isbirthday:
+        speed = speed - 5
+
+    if speed <= 60:
+        return 0
+
+    if speed > 60 and speed < 80:
+        return 1
+
+    if speed >= 80:
+        return 2
 
 def findarea(figure: int, a: int, b: int) -> float:
     """
@@ -124,8 +165,22 @@ def findarea(figure: int, a: int, b: int) -> float:
     :param b: teise külje pikkus või kolmnurga kõrgus
     :return: pindala ujukomaarvuna
     """
-    pass
 
+    if figure == 0:
+        result = a * b
+
+    if figure == 1:
+        result = a * b
+
+    if figure == 2:
+        result = 0.5 * a * b
+
+    if figure == 3:
+        PI = 3.141592653589793
+        result = PI * (a ** 2)
+
+    result = round(result, 2)
+    return result
 
 def salesnight(price: int, sale: int, client: bool) -> str:
     """
@@ -144,7 +199,19 @@ def salesnight(price: int, sale: int, client: bool) -> str:
     :param client: tõeväärsus kas on kliendikaart või mitte
     :return: hind peale allahindlust
     """
-    pass
+
+    if client:
+        client_discount = 10
+    else:
+        client_discount = 0
+
+    if sale >= 79:
+        discount = (price * (50 + client_discount)) / 100
+    else:
+        discount = (price * (sale + client_discount)) / 100
+
+    result = price - discount
+    return f"{result} €"
 
 
 # Krijuta siia kas funktsioon või meetod, mis tagastab või prindib konsooli
